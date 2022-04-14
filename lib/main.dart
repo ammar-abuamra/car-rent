@@ -1,8 +1,11 @@
 import 'package:carrent/widget/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 
+import 'Screens/ChatScreen.dart';
+import 'Screens/SettingScreen.dart';
 import 'Screens/avalibalecars.dart';
-import 'HomeScreen.dart';
+import 'Screens/HomeScreen.dart';
+import 'Screens/orderScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +34,11 @@ class _MyAppState extends State<MyApp> {
         'navScreen':(context)=>BottomNavBar(),
         'HomePage':(context)=>MyHomePage(),
         'avaliabelCarScreen':(context)=>Avalibalecars(),
+        'OrderScreen':(context)=> OrderScreen(),
+        'ChatScreen':(context)=> ChatScreen(),
+        'SettingScreen':(context)=>SettingScreen(),
+
+
       },
     );
   }

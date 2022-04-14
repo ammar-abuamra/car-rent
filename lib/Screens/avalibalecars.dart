@@ -1,3 +1,4 @@
+import 'package:carrent/Screens/Avalibalcar2.dart';
 import 'package:carrent/Sizeconfig.dart';
 import 'package:carrent/widget/CarCard.dart';
 import 'package:flutter/cupertino.dart';
@@ -5,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 
-import '../HomeScreen.dart';
+import '../widget/bottomNavBar.dart';
+import 'HomeScreen.dart';
 import '../constans.dart';
 
 class Avalibalecars extends StatefulWidget {
@@ -16,19 +18,10 @@ class Avalibalecars extends StatefulWidget {
 }
 
 class _AvalibalecarsState extends State<Avalibalecars> {
-  void posttry() async {
-    try {
-      http.Response response = await http
-          .post(Uri.parse('https://lyon-jo.com/api/getAvailableCars.php'), body: {
-        "startDate": startDate.toString(),
-        "startTime": StartTime.toString(),
-        "endDate": EndDate.toString(),
-        "endTime": EndTime.toString(),
-      });
-      print(response.body);
-    } catch (er) {
-      print(er);
-    }
+  void NavToAvalivalecar() async {
+
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>const avalibalecar2() ));
+
   }
 
   DateTime? startDate;
@@ -100,6 +93,7 @@ class _AvalibalecarsState extends State<Avalibalecars> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65),
         child: AppBar(
@@ -209,7 +203,7 @@ class _AvalibalecarsState extends State<Avalibalecars> {
             ShowCarsContainer(
                 StartText: 'Show Avalibale Cars',
                 DateText: 'Show Avalibale Cars',
-                tab:posttry,
+                tab:NavToAvalivalecar,
                 IfConditon: EndTime),
           ],
         ),

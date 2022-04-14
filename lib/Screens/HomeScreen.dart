@@ -1,6 +1,5 @@
 import 'package:carrent/Moudles/CarsMoudle.dart';
 import 'package:carrent/Sizeconfig.dart';
-import 'package:carrent/service/webservice.dart';
 import 'package:carrent/widget/bottomNavBar.dart';
 import 'package:carrent/widget/CarCard.dart';
 import 'package:carrent/widget/homeScreenBody.dart';
@@ -11,7 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
-import 'Screens/avalibalecars.dart';
+import 'avalibalecars.dart';
 
 class MyHomePage extends StatefulWidget {
   @override

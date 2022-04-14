@@ -1,14 +1,12 @@
 
-
-
 import 'package:carrent/Screens/avalibalecars.dart';
-import 'package:carrent/HomeScreen.dart';
-import 'package:carrent/Screens/posttest.dart';
+import 'package:carrent/Screens/HomeScreen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../Screens/post2.dart';
+import '../Screens/ChatScreen.dart';
+import '../Screens/SettingScreen.dart';
+import '../Screens/orderScreen.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -25,9 +23,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final Screens = [
     MyHomePage(),
-    Avalibalecars(),
-    testpage(),
-    Testq(),
+    OrderScreen(),
+    ChatScreen(),
+    SettingScreen(),
   ];
 
 

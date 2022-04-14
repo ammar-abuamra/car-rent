@@ -1,9 +1,10 @@
 import 'package:carrent/Moudles/CarsMoudle.dart';
 import 'package:carrent/Sizeconfig.dart';
-import 'package:carrent/service/webservice.dart';
 import 'package:carrent/widget/CarCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../CarsData.dart';
+import '../Screens/avalibalecars.dart';
 import '../constans.dart';
 import 'HomePageHeader.dart';
 import 'OurServiceText.dart';
@@ -63,40 +64,28 @@ class _BodyState extends State<Body> {
                 ),
               ),
 
-              Container(
-                  height: getProportionateScreenHeight(400),
-                  width: getProportionateScreenHeight(600),
-                  child: FutureBuilder<List<CarsMoudle>>(
-                    future: GetAllCars().Allcars(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        List<CarsMoudle>cars=snapshot.data!;
-                        return GridView.builder(
-                            controller:controller ,
-                            shrinkWrap: true,
-                            physics: ScrollPhysics(),
-                            itemCount: cars.length,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 1,
-                                mainAxisSpacing: 10,
-                                crossAxisSpacing: 10),
-                            itemBuilder: (context, index) {
-                              return CarCardWidget(cars: cars[index],);
-                            });
-
-                      } else{
-                        return Center(child: Column(
-                          children: [
-                            CircularProgressIndicator(color: Color(0xff5d69b3),),
-                            Text('LOADING ... !')
-                          ],
-                        ));
-
-                      }
-                    }
-                    ,
-                  )),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const Avalibalecars() ));
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                    height: getProportionateScreenHeight(400),
+                    width: getProportionateScreenHeight(600),
+                    child:GridView.builder(
+                        controller:controller ,
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: carsData.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: .7,
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 15),
+                        itemBuilder: (context, index) {
+                          return cardt(card: carsData[index]);
+                        }) ),
+              ),
             ],
           ),
         ],
@@ -105,93 +94,6 @@ class _BodyState extends State<Body> {
   }
 }
 
-// class CardForsubcatogry extends StatelessWidget {
-//   String image;
-//   String textforname;
-//   int price;
-//
-//   CardForsubcatogry(
-//       {required this.image, required this.textforname, required this.price});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Padding(
-//         padding: const EdgeInsets.all(5.0),
-//         child: Container(
-//           decoration: BoxDecoration(
-//             color: Colors.amber[200],
-//             border: Border.all(color: Colors.black),
-//             borderRadius: BorderRadius.all(Radius.circular(20)),
-//           ),
-//           height: MediaQuery.of(context).size.height / 6,
-//           width: MediaQuery.of(context).size.width,
-//           child: Row(
-//             children: [
-//               Padding(
-//                 padding: const EdgeInsets.all(3.0),
-//                 child: Image.asset(
-//                   image,
-//                   height: MediaQuery.of(context).size.height / 5,
-//                   width: 150,
-//                   fit: BoxFit.contain,
-//                 ),
-//               ),
-//               Expanded(
-//                 child: Column(
-//                   children: [
-//                     Wrap(
-//                       children: [
-//                         Text(
-//                           textforname,
-//                           style: TextStyle(fontSize: 20),
-//                         ),
-//                       ],
-//                     ),
-//                     Text(
-//                       price.toString() + ' \$',
-//                       style: TextStyle(fontSize: 20),
-//                     )
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-//
-// SizedBox(
-// child: CarouselSlider(
-// options: CarouselOptions(
-//
-// autoPlay: true,
-// ),
-// items: [1, 2, 3, 4, 5].map((i) {
-// return Builder(
-// builder: (BuildContext context) {
-// return Container(
-// width: MediaQuery.of(context).size.width,
-// margin:
-// EdgeInsets.symmetric(horizontal: 5.0, vertical: 15),
-// decoration: BoxDecoration(
-//
-// borderRadius: BorderRadius.all(Radius.circular(30)),
-// color: Colors.amber.withOpacity(.4),
-// image: DecorationImage(image: NetworkImage( 'http:\/\/lyon-jo.com\/wp-content\/uploads\/2016\/05\/Kia-Picanto-2016.png',
-// )  )
-//
-// ),
-//
-// );
-// },
-// );
-// }).toList(),
-// ),
-// )
 
 
 Categoty(){
@@ -208,8 +110,8 @@ Categoty(){
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
               fit: BoxFit.fill,
-              image: NetworkImage(
-                "http:\/\/lyon-jo.com\/wp-content\/uploads\/2020\/01\/accent-2020-1.png",
+              image: AssetImage(
+                "assets/carsImage/MITSUBISHI_PAJERO.png",
               ),
             ),
           ),

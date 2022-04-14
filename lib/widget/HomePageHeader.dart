@@ -16,10 +16,10 @@ class HomePageHeader extends StatelessWidget {
 
       overflow: Overflow.visible,
       children: [
-        Image.network('http:\/\/lyon-jo.com\/wp-content\/uploads\/2019\/05\/sonata-3-2015.png',
+        Image.asset('assets/carsImage/sonata-2015.png',
           height: getProportionateScreenHeight(300),
 
-          fit: BoxFit.cover,),
+          fit: BoxFit.contain,),
 
         Positioned(
           bottom: getProportionateScreenWidth(-25),
